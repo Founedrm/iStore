@@ -1,9 +1,14 @@
+import Authentification.HomeScreen;
 import Authentification.Login;
 import iStore.iStore;
 
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
-        iStore iStore = new iStore();
-        Login connexion = new Login();
+        SwingUtilities.invokeLater(() -> {
+            HomeScreen homeScreen = new HomeScreen();
+            homeScreen.setVisible(true);
+        });
     }
 }
