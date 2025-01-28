@@ -5,58 +5,52 @@ import java.awt.*;
 
 public class HomeScreen extends JFrame {
     public HomeScreen() {
-        setTitle("IStore"); // Titre de la fenêtre
-        setSize(800, 600); // Taille de la fenêtre
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermer l'application quand on ferme la fenêtre
-        setLocationRelativeTo(null); // Centrer la fenêtre sur l'écran
+        setTitle("IStore");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setResizable(false);
 
-        // Création du logo
         JLabel logoLabel = new JLabel("IStore");
-        logoLabel.setFont(new Font("Arial", Font.BOLD, 48)); // Style du texte
-        logoLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centrer le texte
+        logoLabel.setFont(new Font("Arial", Font.BOLD, 48));
+        logoLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Boutons
         JButton createAccountButton = new JButton("Créer un compte");
         JButton loginButton = new JButton("Se connecter");
 
-        // Style des boutons
-        styleButton(createAccountButton, new Color(0x4CAF50)); // Vert
-        styleButton(loginButton, new Color(0x2196F3)); // Bleu
+        styleButton(createAccountButton, new Color(0x4CAF50));
+        styleButton(loginButton, new Color(0x2196F3));
 
-        // Panneau principal
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS)); // Disposition verticale
-        mainPanel.setBackground(new Color(0xF1F1F1)); // Couleur de fond
-        mainPanel.add(Box.createVerticalGlue()); // Espace flexible en haut
-        mainPanel.add(logoLabel); // Ajouter le logo
-        mainPanel.add(Box.createVerticalStrut(15)); // Espace entre les éléments
-        mainPanel.add(createAccountButton); // Ajouter le bouton "Créer un compte"
-        mainPanel.add(Box.createVerticalStrut(10)); // Espace entre les éléments
-        mainPanel.add(loginButton); // Ajouter le bouton "Se connecter"
-        mainPanel.add(Box.createVerticalGlue()); // Espace flexible en bas
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.setBackground(new Color(0xF1F1F1));
+        mainPanel.add(Box.createVerticalGlue());
+        mainPanel.add(logoLabel);
+        mainPanel.add(Box.createVerticalStrut(15));
+        mainPanel.add(createAccountButton);
+        mainPanel.add(Box.createVerticalStrut(10));
+        mainPanel.add(loginButton);
+        mainPanel.add(Box.createVerticalGlue());
 
-        // Gestion des clics
         createAccountButton.addActionListener(e -> {
-            new SignIn(this).setVisible(true); // Ouvrir l'écran d'inscription
-            setVisible(false); // Masquer l'écran d'accueil
+            new SignIn(this).setVisible(true);
+            setVisible(false);
         });
 
         loginButton.addActionListener(e -> {
-            new Login(this).setVisible(true); // Ouvrir l'écran de connexion
-            setVisible(false); // Masquer l'écran d'accueil
+            new Login(this).setVisible(true);
+            setVisible(false);
         });
 
-        add(mainPanel); // Ajouter le panneau principal à la fenêtre
+        add(mainPanel);
     }
 
-    // Méthode pour styliser les boutons
     private void styleButton(JButton button, Color color) {
-        button.setBackground(color); // Couleur de fond
-        button.setForeground(Color.WHITE); // Couleur du texte
-        button.setFont(new Font("Arial", Font.PLAIN, 14)); // Police du texte
-        button.setPreferredSize(new Dimension(200, 40)); // Taille du bouton
-        button.setMaximumSize(new Dimension(200, 40)); // Taille maximale
-        button.setAlignmentX(Component.CENTER_ALIGNMENT); // Centrer le bouton
+        button.setBackground(color);
+        button.setForeground(Color.WHITE);
+        button.setFont(new Font("Arial", Font.PLAIN, 14));
+        button.setPreferredSize(new Dimension(200, 40));
+        button.setMaximumSize(new Dimension(200, 40));
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 }
