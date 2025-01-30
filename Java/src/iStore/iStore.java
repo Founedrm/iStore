@@ -35,7 +35,7 @@ public class iStore extends JFrame {
         logo.setBounds(20, 20, 160, 30);
         leftPanel.add(logo);
 
-        JButton homeBouton = new JButton("Dashboard");
+        JButton homeBouton = new JButton("Accueil");
         homeBouton.setBackground(new Color(0xe0aaff));
         homeBouton.setForeground(Color.BLACK);
         homeBouton.setBorder(BorderFactory.createEmptyBorder());
@@ -65,7 +65,11 @@ public class iStore extends JFrame {
         rightPanel.add(compte);
 
         compte.addActionListener(e -> {
-            pageCompte();
+            dispose();
+
+            // Créer une nouvelle instance de Compte et la rendre visible
+            Compte comptePage = new Compte(utilisateur);
+            comptePage.setVisible(true);
         });
 
         add(rightPanel);
@@ -73,8 +77,5 @@ public class iStore extends JFrame {
 
     }
 
-    private void pageCompte(){
-        Compte compte = new Compte(utilisateur);
-        setVisible(false);
-    }
+
 }

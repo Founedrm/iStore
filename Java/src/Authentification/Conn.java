@@ -131,4 +131,35 @@ public class Conn {
         return conn;
     }
 
+    public static boolean addWhitelisted(String email) {
+        String checkQuery = "SELECT * FROM whitelisted WHERE email = ?";
+        String insertQuery = "INSERT INTO whitelisted (email) VALUES (?)";
+
+        try (PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
+            checkStmt.setString(1, email);
+            try (ResultSet rs = checkStmt.executeQuery()) {
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(null, "L'email est déjà présent dans la table.");
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        // Si l'email n'existe pas encore, on l'insère
+        try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
+            insertStmt.setString(1, email);
+            int rowsInserted = insertStmt.executeUpdate();
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+
 }

@@ -41,8 +41,7 @@ public class Utilisateur {
         }
     }
 
-    public int getID(int ID) {
-
+    public int getID() {
         return ID;
     }
     public String getEmail() {
@@ -59,4 +58,10 @@ public class Utilisateur {
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
 }

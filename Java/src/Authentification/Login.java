@@ -57,7 +57,7 @@ public class Login extends JFrame {
                     utilisateur.getPseudo();
                     iStore iStore = new iStore(utilisateur);
                     dispose();
-                    System.out.println("Utilisateur authentifié !" + utilisateur.getEmail());
+                    System.out.println("Utilisateur authentifié !" + " " + " " + utilisateur.getID() + utilisateur.getEmail());
                 } else {
                     System.out.println("Échec de l'authentification.");
                 }

@@ -13,7 +13,5 @@ public class Main {
             homeScreen.setVisible(true);
         });
 
-        //iStore iStore = new iStore();
-
     }
 }
