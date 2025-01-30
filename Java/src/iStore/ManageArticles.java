@@ -23,7 +23,6 @@ public class ManageArticles extends JFrame {
         setLayout(new BorderLayout(10, 10));
         setLocationRelativeTo(null);
 
-        // Initialisation des composants UI EN PREMIER
         shopComboBox = new JComboBox<>();
         articleListModel = new DefaultListModel<>();
         articleList = new JList<>(articleListModel);
@@ -32,7 +31,6 @@ public class ManageArticles extends JFrame {
         updateStockButton = new JButton("Modifier le stock");
         returnButton = new JButton("Retour");
 
-        // Configuration de l'UI
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         topPanel.add(new JLabel("Sélectionner un magasin :"));
         topPanel.add(shopComboBox);
@@ -47,7 +45,6 @@ public class ManageArticles extends JFrame {
         add(new JScrollPane(articleList), BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        // Connexion BD et chargement initial
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/istore", "root", "");
             loadShops();
@@ -55,7 +52,6 @@ public class ManageArticles extends JFrame {
             JOptionPane.showMessageDialog(this, "Erreur de connexion : " + e.getMessage());
         }
 
-        // Gestion des événements
         shopComboBox.addActionListener(e -> loadArticles());
 
         addArticleButton.addActionListener(e -> addArticle());
@@ -116,7 +112,6 @@ public class ManageArticles extends JFrame {
         }
 
         try {
-            // Récupérer l'ID du store
             int storeId;
             try (PreparedStatement stmt = conn.prepareStatement(
                     "SELECT id FROM store WHERE name = ?")) {
@@ -126,12 +121,10 @@ public class ManageArticles extends JFrame {
                 storeId = rs.getInt("id");
             }
 
-            // Saisie des données
             String articleName = JOptionPane.showInputDialog("Nom de l'article :");
             int stock = Integer.parseInt(JOptionPane.showInputDialog("Stock :"));
             double price = Double.parseDouble(JOptionPane.showInputDialog("Prix :"));
 
-            // Insertion
             try (PreparedStatement stmt = conn.prepareStatement(
                     "INSERT INTO items (name, storage, price, inventory_id) " +
                             "VALUES (?, ?, ?, (SELECT id FROM inventory WHERE store_id = ?))")) {

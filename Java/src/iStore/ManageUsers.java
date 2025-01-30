@@ -97,7 +97,6 @@ public class ManageUsers extends JFrame {
 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/istore", "root", "")) {
 
-            // ========== Vérification 1 : Whitelist ==========
             PreparedStatement checkWhitelist = conn.prepareStatement(
                     "SELECT id FROM whitelisted WHERE email = ?"
             );
@@ -112,7 +111,6 @@ public class ManageUsers extends JFrame {
                 return;
             }
 
-            // ========== Vérification 2 : Email existant ==========
             PreparedStatement checkExistingUser = conn.prepareStatement(
                     "SELECT id FROM utilisateur WHERE email = ?"
             );
@@ -127,7 +125,6 @@ public class ManageUsers extends JFrame {
                 return;
             }
 
-            // ========== Si tout est OK ==========
             String pseudo = JOptionPane.showInputDialog("Pseudo :");
             String password = JOptionPane.showInputDialog("Mot de passe :");
 
@@ -137,7 +134,7 @@ public class ManageUsers extends JFrame {
             }
 
             PreparedStatement createUser = conn.prepareStatement(
-                    "INSERT INTO utilisateur (email, pseudo, password, role) VALUES (?, ?, ?, 'user')"
+                    "INSERT INTO utilisateur (email, pseudo, password, role) VALUES (?, ?, ?, 'PEOPLE')"
             );
             createUser.setString(1, email);
             createUser.setString(2, pseudo);
