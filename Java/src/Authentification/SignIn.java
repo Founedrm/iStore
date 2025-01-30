@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import User.Utilisateur;
 import iStore.iStore;
 
 public class SignIn extends JFrame {
@@ -58,7 +59,8 @@ public class SignIn extends JFrame {
                 Conn conn = new Conn();
                 boolean isSignIn = conn.singIn(email.getText(), pseudo.getText(), new String(password.getPassword()));
                 if (isSignIn) {
-                    iStore iStore = new iStore();
+                    Utilisateur utilisateur = new Utilisateur(email.getText());
+                    iStore iStore = new iStore(utilisateur);
                     dispose();
                     System.out.println("Utilisateur inscript");
                 } else {

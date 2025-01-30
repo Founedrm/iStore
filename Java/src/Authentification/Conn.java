@@ -1,5 +1,7 @@
 package Authentification;
 
+import User.Utilisateur;
+
 import javax.swing.*;
 import java.sql.*;
 
@@ -124,4 +126,9 @@ public class Conn {
         }
         return -1;
     }
+
+    public static Connection getConn() {
+        return conn;
+    }
+
 }

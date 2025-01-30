@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import User.Utilisateur;
 import iStore.iStore;
 
 public class Login extends JFrame {
@@ -52,9 +53,11 @@ public class Login extends JFrame {
                 Conn conn = new Conn();
                 boolean isAuthenticated = conn.Connect(emailField.getText(), new String(passwordField.getPassword()));
                 if (isAuthenticated) {
-                    iStore iStore = new iStore();
+                    Utilisateur utilisateur = new Utilisateur(emailField.getText());
+                    utilisateur.getPseudo();
+                    iStore iStore = new iStore(utilisateur);
                     dispose();
-                    System.out.println("Utilisateur authentifié !");
+                    System.out.println("Utilisateur authentifié !" + utilisateur.getEmail());
                 } else {
                     System.out.println("Échec de l'authentification.");
                 }
