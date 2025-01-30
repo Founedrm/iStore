@@ -49,6 +49,28 @@ public class iStore extends JFrame {
         userBouton.setBounds(20, 160, 160, 40);
         leftPanel.add(userBouton);
 
+        userBouton.addActionListener(e -> {
+            dispose();
+            new ManageUsers(utilisateur);
+        });
+
+        JButton stockBouton = new JButton("Gérer les stocks");
+        stockBouton.setBackground(new Color(0xe0aaff));
+        stockBouton.setForeground(Color.BLACK);
+        stockBouton.setBorder(BorderFactory.createEmptyBorder());
+        stockBouton.setBounds(20, 220, 160, 40);
+
+        if (utilisateur.getRole().equals("ADMIN")) {
+            leftPanel.add(stockBouton);
+        }
+
+        stockBouton.addActionListener(e -> {
+            dispose();  // Fermer la fenêtre actuelle
+            ManageArticles manageArticlesPage = new ManageArticles(utilisateur);  // Créer l'instance de ManageArticles
+            manageArticlesPage.setVisible(true);  // Assurez-vous que la page s'affiche
+        });
+
+
         add(leftPanel);
     }
 
