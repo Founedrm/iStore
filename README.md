@@ -13,7 +13,8 @@ Créez une base de données MYSQL : CREATE DATABSE istore;
 Ensuite importer le fichier istore.sql disponible dans le dossier.  
 Insérez un email pour le premier admin : INSERT INTO whitelisted (email) VALUES ('admin@istore.com');  
 
-Afin de pouvoir connecter JDBC pour pouvoir connecter l'application et la base de données, vous devenz ajouter le fichier jar de mysqlconnecter dans le projet. Pour ajouter le fichier jar : File > Project Structure > Librairies > Cliquez sur Java > Enfin sélectionner le fichier jar.  
+Afin de pouvoir utiliser JDBC pour pouvoir connecter l'application et la base de donnée, vous devez ajouter le fichier jar de mysqlconnecter dans le projet. Pour ajouter le fichier jar : File > Project Structure > Librairies > Cliquez sur Java > Enfin sélectionner le fichier jar.  
+Le fichier jar est diponible dans le dossier mysqlconnecter du projet.  
 
 Le projet est maintenant utilisable.
 
